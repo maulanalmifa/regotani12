@@ -92,7 +92,7 @@ include 'tes.php';
       </div>
       <div class="row" style="padding-top:10px;">
         <div class="col-4">
-          <img class="img-fluid" src="../img/17Padi.jpg" alt="" style="display: inline-block; width:400px; height:400px; background-repeat:no-repeat; background-position: center center; background-size:cover;" >
+          <img class="img-fluid" src="<?php echo "../img/".$beli_produk['gambar'];?>" alt="" style="display: inline-block; width:400px; height:400px; background-repeat:no-repeat; background-position: center center; background-size:cover;" >
         </div>
       <div class="col-6">
       <div class="row">

@@ -87,11 +87,12 @@ include 'tes.php';
         $query_edit = mysqli_query($conn,"SELECT * FROM produk WHERE id_produk = '$id'")or die(mysqli_error());
         while($edit_produk = mysqli_fetch_array($query_edit)){
         ?>
-        <form action="..\php_proses\update-produk.php" method="post">
+        <form action="..\php_proses\update-produk.php" method="post" enctype="multipart/form-data">
         <div class="col">
         <div class="row justify-content-md-left">
                 <div class="col-2">
-                    <img class="img-fluid" src="../img/17Padi.jpg" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
+                    <img class="img-fluid" src="<?php echo "../img/".$edit_produk['gambar'];?>" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
+                    <input type="file" name="file">
                 </div>
                 <div class="col-6">
                     <div class="form-group" style="text-align:left;">

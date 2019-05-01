@@ -198,13 +198,14 @@ include 'tes.php';
               </form>
               <!--Primer-->
               <?php
+                  include 'pagination.php';
                   $sesi=$_SESSION['email'];
                   $status=mysqli_query($conn,"SELECT * FROM user WHERE email='$sesi'") or die(mysqli_error($conn));
                   $statuse=mysqli_fetch_array($status);
                   $level=$statuse['status'];
                   if ($level=='Pembeli') { 
-              $query_display_produk = mysqli_query($conn,"SELECT p.id_produk, p.nama_produk, u.nama, u.telepon, p.harga, u.basis_dagang, u.status FROM produk p INNER JOIN user u ON p.id_user=u.id_user HAVING status='Pedagang';")or die(mysqli_error($conn));
-              while ($display_produk = mysqli_fetch_array($query_display_produk)) {
+              $query_display_produk = mysqli_query($conn,"SELECT p.id_produk, p.nama_produk, p.gambar, u.nama, u.telepon, p.harga, u.basis_dagang, u.status FROM produk p INNER JOIN user u ON p.id_user=u.id_user HAVING status='Pedagang';")or die(mysqli_error($conn));
+              while ($display_produk = mysqli_fetch_array($nquery)) {
               ?>
             <table class="table" style="background-color: #fff;">
               <tbody>
@@ -212,7 +213,7 @@ include 'tes.php';
                 </tr>
                 <tr>
                   <td style="width:250px;">
-                    <img class="img-fluid" src="..\img\17Padi.jpg" alt=""></td>
+                    <img class="img-fluid" src="<?php echo "../img/".$display_produk['gambar'];?>" alt="" style="display: inline-block; height:200px; width:200px; background-repeat:no-repeat; background-position: center center; background-size:cover"></td>
                   <td>
                     <h6><?php echo $display_produk['nama_produk'];?> <span style="color:#ffcc00;"><?php echo $display_produk['nama'];?></span></h6>
                     <h4 style="color:#006c5c; font-weight:bold;"><?php echo $display_produk['harga'];?><h6 style="font-size:12pt; color:#000;">/Kg<h6></h4>
@@ -228,8 +229,8 @@ include 'tes.php';
             </table>
               <?php }
             } else {
-              $query_display_produk = mysqli_query($conn,"SELECT p.id_produk, p.nama_produk, u.nama, u.telepon, p.harga, u.basis_dagang, u.status FROM produk p INNER JOIN user u ON p.id_user=u.id_user HAVING status='Petani';")or die(mysqli_error($conn));
-              while ($display_produk = mysqli_fetch_array($query_display_produk)) {
+              $query_display_produk = mysqli_query($conn,"SELECT p.id_produk, p.nama_produk, p.gambar, u.nama, u.telepon, p.harga, u.basis_dagang, u.status FROM produk p INNER JOIN user u ON p.id_user=u.id_user HAVING status='Petani';")or die(mysqli_error($conn));
+              while ($display_produk = mysqli_fetch_array($mquery)) {
               ?>
             <table class="table" style="background-color: #fff;">
               <tbody>
@@ -237,7 +238,7 @@ include 'tes.php';
                 </tr>
                 <tr>
                   <td style="width:250px;">
-                    <img class="img-fluid" src="..\img\17Padi.jpg" alt=""></td>
+                    <img class="img-fluid" src="<?php echo "../img/".$display_produk['gambar'];?>" alt=""></td>
                   <td>
                     <h6><?php echo $display_produk['nama_produk'];?> <span style="color:#ffcc00;"><?php echo $display_produk['nama'];?></span></h6>
                     <h4 style="color:#006c5c; font-weight:bold;"><?php echo $display_produk['harga'];?><h6 style="font-size:12pt; color:#000;">/Kg<h6></h4>
@@ -253,6 +254,7 @@ include 'tes.php';
             </table>
               <?php }
               } ?>
+          <div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
           </div>
         <div class="col-2" style="background-color:#eee8d8; padding-top:10px; position:relative;">
             <h5 style="color:#006c5c">Perkembangan Harga</h5>

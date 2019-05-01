@@ -80,13 +80,18 @@ include 'tes.php';
         <div class="row justify-content-md-center">
             <h4 style="color:#006c5c;">Tambah Produk</h4>
         </div>
-        <form action="..\php_proses\proses_tambah_produk.php" method="post">
+        <form action="..\php_proses\proses_tambah_produk.php" method="post" enctype="multipart/form-data">
         <div class="col">
         <div class="row justify-content-md-left">
                 <div class="col-2">
-                    <img class="img-fluid" src="../img/17Padi.jpg" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
+                  <div class="row">
+                  <img class="img-fluid" src="<?php echo "../img/".$d['gambar'];?>" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
+                  </div>
+                  <div class="row">
+                    <input type="file" name="file">
+                  </div>
                 </div>
-                <div class="col-6">
+                <div class="col">
                     <div class="form-group" style="text-align:left;">
                         <label for="inputName">Nama Produk</label>
                         <input id="inputName" name="inputName" class="form-control" type="text" placeholder="Nama Produk">
@@ -145,3 +150,4 @@ include 'tes.php';
   </div>
   </form>
 </div>
+</body>

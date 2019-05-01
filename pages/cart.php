@@ -80,9 +80,9 @@ include 'tes.php';
     <h4 style="text-align:center; padding:10px;">Keranjangku</h4>
     <div class="row" style="text-align:center; padding-bottom:10px;">
       <div class="col">
-          <p></p>
+          <p>Gambar</p>
       </div>
-      <div class="col" style="vertical-align:middle">
+      <div class="col">
           <p>Nama Produk</p>
       </div>
       <div class="col">
@@ -110,9 +110,9 @@ include 'tes.php';
     while ($data_cart=mysqli_fetch_array($query_cart)) { ?>
     <div class="row" style="text-align:center;">
       <div class="col">
-          <img class="img-fluid" src="../img/17Padi.jpg" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
+          <img class="img-fluid" src="<?php echo "../img/".$data_cart['gambar'];?>" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
       </div>
-      <div class="col" style="vertical-align:middle">
+      <div class="col">
           <h5><?php echo $data_cart['nama_produk'];?></h5>
       </div>
       <div class="col">
@@ -146,7 +146,8 @@ include 'tes.php';
       <p>Transaksi Selesai, Terkonfirmasi</p>
       <?php } ?>
     </div>
-    <?php }
-    ?>
     </div>
+      <?php }
+    ?>
+</div>
 </div>

@@ -95,7 +95,7 @@ while ($data_produk = mysqli_fetch_array($query_produk)) {
 ?>
     <div class="row" style="text-align:left; padding-bottom:10px;">
       <div class="col">
-          <img class="img-fluid" src="../img/17Padi.jpg" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
+          <img class="img-fluid" src="<?php echo "../img/".$data_produk['gambar'];?>" alt="" style="display: inline-block; width:100px; height:100px; border-radius:30%; background-repeat:no-repeat; background-position: center center; background-size:cover;">
       </div>
       <div class="col" style="vertical-align:middle">
           <h5><?php echo $data_produk['nama_produk'];?></h5>
