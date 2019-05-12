@@ -2,6 +2,10 @@
 <?php
 session_start();
 include 'tes.php';
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$start = $time;
 ?>
 <html lang="en" style="background-color:#eee8d8;">
 <head>
@@ -150,5 +154,17 @@ include 'tes.php';
         <a href="profile.php"><button class="btn btn-danger" name="batal" type="button" style="border:none;width:100px; border-radius: 10px;">Batal</button></a>
         </div>
     </div>
+    <div class="row justify-content-md-center" style="padding-top:20px;">
+        <div class="col-lg-2">
+        <a href="../php_proses/proses_hapus_profil.php"><button class="btn btn-danger" name="hapus" style="border:none; width:200px; border-radius: 10px;" type="button">Hapus Akun</button></a>
+        </div>
     </form>
 </div>
+<?php
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$finish = $time;
+$total_time = round(($finish - $start), 4);
+echo 'Page generated in '.$total_time.' seconds.';
+?>
